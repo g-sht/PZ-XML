@@ -34,9 +34,9 @@ public class AuthController(AuthenticationService _authService, JwtService _jwtS
     {
         var jwt = string.Empty;
 
-        if (model.Email == string.Empty && model.Phone == string.Empty)
+        if (!model.IsEmailSet() && model.Phone == string.Empty)
             return BadRequest();
-        else if (model.Email != string.Empty)
+        else if (model.IsEmailSet())
             jwt = await _authService.LoginWithEmail(model.Email, model.Password);
         else 
             jwt = await _authService.LoginWithPhone(model.Phone, model.Password);

@@ -1,15 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Auth;
+
 public class LoginModel
 {
-    [Required]
     public required string Password { get; set; }
 
+    private string? _email;
+
     [EmailAddress]
-    public string Email { get; set; } = string.Empty;
+    public string Email { 
+        get => string.IsNullOrEmpty(_email) ? "default@example.com" : _email; 
+        set => _email = value; 
+    }
 
     public string Phone { get; set; } = string.Empty;
+
+    public bool IsEmailSet() => !string.IsNullOrEmpty(_email);
 }
 
 public class RegisterModel

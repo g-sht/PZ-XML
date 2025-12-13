@@ -127,13 +127,9 @@
       "LoginModel": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "password"
-        ],
         "properties": {
           "password": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "email": {
             "type": "string",

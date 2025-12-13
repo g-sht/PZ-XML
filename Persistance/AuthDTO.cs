@@ -23,20 +23,20 @@ public class ContactPerson
     public Guid Id { get; set; } = Guid.NewGuid();
 
     [Column("first_name")]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
 
     [Column("last_name")]
-    public string LastName { get; set; }
-    
+    public string LastName { get; set; } = string.Empty;
+
     [Column("phone")]
-    public string Phone { get; set; }
+    public string Phone { get; set; } = string.Empty;
     
     [Column("email")]
     [EmailAddress]
-    public string Email { get; set; }
+    public string Email { get; set; } = string.Empty;
 
     [Column("password_hash")]
-    public string PasswordHash { get; set; }
+    public string PasswordHash { get; set; } = string.Empty;
 
     [Column("organization_id")]
     public Guid OrgId { get; set; } 

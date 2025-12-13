@@ -18,14 +18,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddOpenApiDocument();
 
-builder.Services.AddCors(o =>
+builder.Services.AddCors(options =>
 {
-    o.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://localhost:3000");
-        policy.AllowAnyHeader();
-        policy.AllowAnyOrigin();
-    });
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // ваш фронтенд
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        });
 });
 
 var app = builder.Build();
@@ -37,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUi();
 }
 
-app.UseCors();
+app.UseCors("AllowFrontend");
 
 app.UseRouting(); 
 
