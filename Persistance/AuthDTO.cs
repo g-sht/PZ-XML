@@ -41,3 +41,12 @@ public class ContactPerson
     [Column("organization_id")]
     public Guid OrgId { get; set; } 
 }
+
+public class UserInfo
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string OrgName { get; set; }
+    public string OrgID { get; set; }
+    public string PersonID { get; set; }
+}

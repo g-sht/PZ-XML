@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PZ-XML")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f808c219ae135ce058565104d76ad6fa9b68d2ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e952a6c328118a95a6b25b2f052bfc6215275aa7")]
 [assembly: System.Reflection.AssemblyProductAttribute("PZ-XML")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PZ-XML")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -6,6 +6,39 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/User/info": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_GetUserInfo",
+        "requestBody": {
+          "x-name": "token",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JwtModel"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Auth/register": {
       "post": {
         "tags": [
@@ -75,6 +108,15 @@
   },
   "components": {
     "schemas": {
+      "JwtModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          }
+        }
+      },
       "RegisterModel": {
         "type": "object",
         "additionalProperties": false,

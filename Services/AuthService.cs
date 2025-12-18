@@ -80,5 +80,15 @@ public class AuthenticationService(AuthenticationRepo _authRepo, JwtService _jwt
         var jwt = await Login(person, password);
         return jwt;
     }
+
+    public async Task<UserInfo?> GetUserInfoByToken(string accessToken)
+    {
+        var claims = _jwtService.ValidateTokenAndExtractClaims(accessToken);
+        if (claims == null)
+            return null;
+
+        var userInfo = await _authRepo.GetInfoByID(claims.Value.orgId, claims.Value.personId);
+        return userInfo;
+    }
 }
 

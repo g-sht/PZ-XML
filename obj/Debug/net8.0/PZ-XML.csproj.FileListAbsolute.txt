@@ -157,3 +157,4 @@ D:\Projects\PZ-XML\PZ-XML\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Projects\PZ-XML\PZ-XML\bin\Debug\net8.0\YamlDotNet.dll
 D:\Projects\PZ-XML\PZ-XML\obj\Debug\net8.0\PZ-XML.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\PZ-XML\PZ-XML\obj\Debug\net8.0\PZ-XML.sourcelink.json
+D:\Projects\PZ-XML\PZ-XML\bin\Debug\net8.0\swagger.json

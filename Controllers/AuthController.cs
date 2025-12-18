@@ -1,6 +1,5 @@
 ﻿using Auth.Services;
 using Microsoft.AspNetCore.Mvc;
-using YamlDotNet.Core.Tokens;
 
 namespace Auth;
 

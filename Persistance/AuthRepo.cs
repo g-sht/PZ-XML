@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Persistance;
 
@@ -48,5 +49,34 @@ public class AuthenticationRepo(ApplicationDbContext _context)
         _context.Organizations.Add(organization);
         await _context.SaveChangesAsync();
         return organization;
+    }
+
+    internal async Task<UserInfo?> GetInfoByID(string orgID, string personID)
+    {
+        if (!Guid.TryParse(orgID, out var orgGuid) || !Guid.TryParse(personID, out var personGuid))
+            return null;
+
+        var person = await _context.Persons
+            .Where(p => p.Id == personGuid)
+            .FirstOrDefaultAsync();
+
+        if (person == null)
+            return null;
+
+        var org = await _context.Organizations
+            .Where(o => o.Id == orgGuid)
+            .FirstOrDefaultAsync();
+
+        if (org == null)
+            return null;
+
+        return new UserInfo
+        {
+            FirstName = person.FirstName,
+            LastName = person.LastName,
+            OrgName = org.OrgName,
+            OrgID = org.Id.ToString(),
+            PersonID = person.Id.ToString()
+        };
     }
 }

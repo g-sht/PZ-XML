@@ -30,5 +30,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "user.UserController",
+    "Method": "GetUserInfo",
+    "RelativePath": "User/info",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "user.JwtModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

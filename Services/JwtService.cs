@@ -30,5 +30,37 @@ public class JwtService(IOptions<AuthSettings> _settings)
 
         return new JwtSecurityTokenHandler().WriteToken(jwt);
     }
+
+    public (string personId, string orgId)? ValidateTokenAndExtractClaims(string token)
+    {
+        try
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_settings.Value.SecretKey);
+            
+            var principal = handler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            }, out SecurityToken validatedToken);
+
+            var jwtToken = (JwtSecurityToken)validatedToken;
+            var personId = jwtToken.Claims.FirstOrDefault(c => c.Type == "personId")?.Value;
+            var orgId = jwtToken.Claims.FirstOrDefault(c => c.Type == "orgId")?.Value;
+
+            if (personId != null && orgId != null)
+                return (personId, orgId);
+
+            return null;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }
 
